@@ -12,7 +12,7 @@ var map = new ol.Map({
 });
 
 //initial view - epsg:3857 coordinates if not "Match project CRS"
-map.getView().fit([-1949477.814968, 2697163.176291, -313736.317122, 4441677.595472], map.getSize());
+map.getView().fit([-1903968.876558, 2364581.207624, -111141.049323, 4289954.807330], map.getSize());
 
 //change cursor
 function pointerOnFeature(evt) {
@@ -501,7 +501,7 @@ var Title = new ol.control.Control({
     element: (() => {
         var titleElement = document.createElement('div');
         titleElement.className = 'top-right-title ol-control';
-        titleElement.innerHTML = '<h2 class="project-title">carte des aieroports - Maroc</h2>';
+        titleElement.innerHTML = '<h2 class="project-title">Carte des aieroports - Maroc</h2>';
         return titleElement;
     })(),
     target: 'top-right-container'

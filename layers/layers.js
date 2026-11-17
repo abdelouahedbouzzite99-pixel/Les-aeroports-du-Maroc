@@ -37,9 +37,13 @@ var jsonSource_AeroportsduMaroc_2 = new ol.source.Vector({
     attributions: ' ',
 });
 jsonSource_AeroportsduMaroc_2.addFeatures(features_AeroportsduMaroc_2);
+cluster_AeroportsduMaroc_2 = new ol.source.Cluster({
+  distance: 30,
+  source: jsonSource_AeroportsduMaroc_2
+});
 var lyr_AeroportsduMaroc_2 = new ol.layer.Vector({
                 declutter: false,
-                source:jsonSource_AeroportsduMaroc_2, 
+                source:cluster_AeroportsduMaroc_2, 
                 style: style_AeroportsduMaroc_2,
                 popuplayertitle: 'Aeroports du Maroc',
                 interactive: true,
@@ -58,13 +62,13 @@ lyr_Limitesdupays_0.setVisible(true);lyr_LimitesdesrgionsMarocaines_1.setVisible
 var layersList = [group_limites,group_transp];
 lyr_Limitesdupays_0.set('fieldAliases', {'OBJECTID': 'OBJECTID', });
 lyr_LimitesdesrgionsMarocaines_1.set('fieldAliases', {'OBJECTID': 'OBJECTID', 'CODE_REGIO': 'CODE_REGIO', 'Nom_Region': 'Nom_Region', 'Population': 'Population', 'Menages': 'Menages', 'Etrangers': 'Etrangers', 'Marocains': 'Marocains', 'Non_ar': 'Non_ar', });
-lyr_AeroportsduMaroc_2.set('fieldAliases', {'Nom (En Français)': 'Nom (En Français)', 'Nom (En Arabe)': 'Nom (En Arabe)', 'iata': 'iata', 'Capacité': 'Capacité', 'Capacité Actuelle (Passagers/An)': 'Capacité Actuelle (Passagers/An)', 'Objectif Horizon 2030 (Extension)': 'Objectif Horizon 2030 (Extension)', });
+lyr_AeroportsduMaroc_2.set('fieldAliases', {'Nom_fr': 'Nom_fr', 'Nom_ar': 'Nom_ar', 'iata': 'iata', 'Capacite_A': 'Capacite_A', 'Capacite_1': 'Capacite_1', 'Capacite_2': 'Capacite_2', });
 lyr_Limitesdupays_0.set('fieldImages', {'OBJECTID': 'TextEdit', });
 lyr_LimitesdesrgionsMarocaines_1.set('fieldImages', {'OBJECTID': 'TextEdit', 'CODE_REGIO': 'TextEdit', 'Nom_Region': 'TextEdit', 'Population': 'TextEdit', 'Menages': 'TextEdit', 'Etrangers': 'TextEdit', 'Marocains': 'TextEdit', 'Non_ar': 'TextEdit', });
-lyr_AeroportsduMaroc_2.set('fieldImages', {'Nom (En Français)': 'TextEdit', 'Nom (En Arabe)': 'TextEdit', 'iata': 'TextEdit', 'Capacité': 'TextEdit', 'Capacité Actuelle (Passagers/An)': 'TextEdit', 'Objectif Horizon 2030 (Extension)': 'TextEdit', });
+lyr_AeroportsduMaroc_2.set('fieldImages', {'Nom_fr': 'TextEdit', 'Nom_ar': 'TextEdit', 'iata': 'TextEdit', 'Capacite_A': 'TextEdit', 'Capacite_1': 'TextEdit', 'Capacite_2': 'TextEdit', });
 lyr_Limitesdupays_0.set('fieldLabels', {'OBJECTID': 'hidden field', });
 lyr_LimitesdesrgionsMarocaines_1.set('fieldLabels', {'OBJECTID': 'hidden field', 'CODE_REGIO': 'hidden field', 'Nom_Region': 'inline label - always visible', 'Population': 'inline label - always visible', 'Menages': 'hidden field', 'Etrangers': 'hidden field', 'Marocains': 'hidden field', 'Non_ar': 'hidden field', });
-lyr_AeroportsduMaroc_2.set('fieldLabels', {'Nom (En Français)': 'inline label - always visible', 'Nom (En Arabe)': 'inline label - always visible', 'iata': 'hidden field', 'Capacité': 'hidden field', 'Capacité Actuelle (Passagers/An)': 'inline label - always visible', 'Objectif Horizon 2030 (Extension)': 'hidden field', });
+lyr_AeroportsduMaroc_2.set('fieldLabels', {'Nom_fr': 'inline label - always visible', 'Nom_ar': 'inline label - always visible', 'iata': 'hidden field', 'Capacite_A': 'hidden field', 'Capacite_1': 'inline label - always visible', 'Capacite_2': 'hidden field', });
 lyr_AeroportsduMaroc_2.on('precompose', function(evt) {
     evt.context.globalCompositeOperation = 'normal';
 });

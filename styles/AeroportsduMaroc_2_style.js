@@ -8,8 +8,7 @@ var style_AeroportsduMaroc_2 = function(feature, resolution){
     };
     
     var labelText = ""; 
-    var value = feature.get("");
-    var labelFont = "13.0px \'Open Sans\', sans-serif";
+    var labelFont = "13.0px \'Noto Serif Medium\', sans-serif";
     var labelFill = "#323232";
     var bufferColor = "";
     var bufferWidth = 0;
@@ -18,10 +17,57 @@ var style_AeroportsduMaroc_2 = function(feature, resolution){
     var offsetY = 3;
     var overflow = false;
     var repeat = 0;
-    var placement = 'point';
-    if (feature.get("Nom (En Français)") !== null && resolution > 280 && resolution < 1400) {
-        labelText = String(feature.get("Nom (En Français)"));
-    }
+    var feature
+	var value
+    var clusteredFeatures = feature.get("features");
+    size = clusteredFeatures.length;
+    if (size == 1) { // If cluster has one feature
+        var feature = clusteredFeatures[0];
+        value = clusteredFeatures[0].get("");
+        if (feature.get("Nom_fr") !== null && resolution > 70 && resolution < 1400) {
+            labelText = String(feature.get("Nom_fr"));
+        }
+    } else { // If cluster has more than one feature
+		labelText = size.toString();
+		var radius = 6 + Math.log(size) * 3;
+		var maxClusterSize = 80;
+		var relativeSize = Math.min(size / maxClusterSize, 1);
+		var redComponent, greenComponent, blueComponent = 0;
+		if (relativeSize < 0.5) {
+			redComponent = Math.floor(210 * (relativeSize / 0.5));
+			greenComponent = 210;
+		} else {
+			redComponent = 210;
+			greenComponent = Math.floor(210 * (1 - (relativeSize - 0.5) / 0.5));
+		}
+		var color = `rgba(${redComponent}, ${greenComponent}, ${blueComponent}, 0.75)`;
+		return [
+			new ol.style.Style({
+				image: new ol.style.Circle({
+					radius: radius + 4,
+					fill: new ol.style.Fill({
+						color: `rgba(${redComponent}, ${greenComponent}, ${blueComponent}, 0.3)`
+					})
+				})
+			}),
+			new ol.style.Style({
+				image: new ol.style.Circle({
+					radius: radius,
+					fill: new ol.style.Fill({
+						color: color
+					})
+				}),
+				text: new ol.style.Text({
+					font: labelFont,
+					text: labelText,
+					fill: new ol.style.Fill({
+						color: labelFill
+					}),
+					placement: placement
+				})
+			})
+		];
+	}
     var style = [ new ol.style.Style({
         image: new ol.style.Icon({
                   imgSize: [580, 580],
@@ -30,7 +76,7 @@ var style_AeroportsduMaroc_2 = function(feature, resolution){
                   anchorXUnits: "pixels",
                   anchorYUnits: "pixels",
                   rotation: 0.0,
-                  src: "styles/transport_airport.svg"
+                  src: "styles/transport_airport2.svg"
             }),
         text: createTextStyle(feature, resolution, labelText, labelFont,
                               labelFill, placement, bufferColor,
