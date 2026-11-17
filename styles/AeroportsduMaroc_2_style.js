@@ -76,7 +76,7 @@ var style_AeroportsduMaroc_2 = function(feature, resolution){
                   anchorXUnits: "pixels",
                   anchorYUnits: "pixels",
                   rotation: 0.0,
-                  src: "styles/transport_airport2.svg"
+                  src: "styles/transport_airport.svg"
             }),
         text: createTextStyle(feature, resolution, labelText, labelFont,
                               labelFill, placement, bufferColor,
