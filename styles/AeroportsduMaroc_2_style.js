@@ -24,7 +24,7 @@ var style_AeroportsduMaroc_2 = function(feature, resolution){
     if (size == 1) { // If cluster has one feature
         var feature = clusteredFeatures[0];
         value = clusteredFeatures[0].get("");
-        if (feature.get("Nom_fr") !== null && resolution > 70 && resolution < 1400) {
+        if (feature.get("Nom_fr") !== null && resolution > 70 && resolution < 1960) {
             labelText = String(feature.get("Nom_fr"));
         }
     } else { // If cluster has more than one feature

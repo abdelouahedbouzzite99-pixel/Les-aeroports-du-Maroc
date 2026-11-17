@@ -6,13 +6,13 @@ var map = new ol.Map({
     view: new ol.View({
         constrainResolution: false,
         maxZoom: 12,
-        minZoom: 5,
+        minZoom: 1,
         
     })
 });
 
 //initial view - epsg:3857 coordinates if not "Match project CRS"
-map.getView().fit([-1903968.876558, 2364581.207624, -111141.049323, 4289954.807330], map.getSize());
+map.getView().fit([-2210706.811086, 2231391.917869, 103892.284962, 4682172.583728], map.getSize());
 
 //change cursor
 function pointerOnFeature(evt) {
@@ -294,7 +294,7 @@ function onPointerMove(evt) {
                     highlightStyle = new ol.style.Style({
                         image: new ol.style.Circle({
                             fill: new ol.style.Fill({
-                                color: "rgba(255, 0, 0, 1.00)"
+                                color: "rgba(253, 191, 111, 1.00)"
                             }),
                             radius: radius
                         })
@@ -305,7 +305,7 @@ function onPointerMove(evt) {
 
                     highlightStyle = new ol.style.Style({
                         stroke: new ol.style.Stroke({
-                            color: 'rgba(255, 0, 0, 1.00)',
+                            color: 'rgba(253, 191, 111, 1.00)',
                             lineDash: null,
                             width: featureWidth
                         })
@@ -314,7 +314,7 @@ function onPointerMove(evt) {
                 } else {
                     highlightStyle = new ol.style.Style({
                         fill: new ol.style.Fill({
-                            color: 'rgba(255, 0, 0, 1.00)'
+                            color: 'rgba(253, 191, 111, 1.00)'
                         })
                     })
                 }
